@@ -1,0 +1,146 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* 基于 class 的暗色模式（Tailwind CSS v4） */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC",
+    sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Code", Consolas,
+    "JetBrains Mono", monospace;
+}
+
+/* 让原生控件（滚动条等）跟随主题 */
+:root {
+  color-scheme: light;
+}
+.dark {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgb(99 102 241 / 0.25);
+}
+
+/* ---------- 代码高亮配色（GitHub 风格，跟随暗色模式） ---------- */
+:root {
+  --hljs-bg: #f6f8fa;
+  --hljs-fg: #24292e;
+  --hljs-comment: #6a737d;
+  --hljs-keyword: #d73a49;
+  --hljs-string: #032f62;
+  --hljs-title: #6f42c1;
+  --hljs-number: #005cc5;
+  --hljs-attr: #22863a;
+  --hljs-built-in: #e36209;
+  --hljs-meta: #6a737d;
+  --hljs-selector: #005cc5;
+}
+
+.dark {
+  --hljs-bg: #0d1117;
+  --hljs-fg: #c9d1d9;
+  --hljs-comment: #8b949e;
+  --hljs-keyword: #ff7b72;
+  --hljs-string: #a5d6ff;
+  --hljs-title: #d2a8ff;
+  --hljs-number: #79c0ff;
+  --hljs-attr: #7ee787;
+  --hljs-built-in: #ffa657;
+  --hljs-meta: #8b949e;
+  --hljs-selector: #79c0ff;
+}
+
+.prose pre,
+pre code.hljs {
+  background-color: var(--hljs-bg) !important;
+  color: var(--hljs-fg);
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: var(--hljs-comment);
+  font-style: italic;
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-template-tag,
+.hljs-section {
+  color: var(--hljs-keyword);
+}
+.hljs-string,
+.hljs-regexp,
+.hljs-addition {
+  color: var(--hljs-string);
+}
+.hljs-title,
+.hljs-title.function_,
+.hljs-title.class_ {
+  color: var(--hljs-title);
+}
+.hljs-number,
+.hljs-literal,
+.hljs-symbol,
+.hljs-bullet {
+  color: var(--hljs-number);
+}
+.hljs-attr,
+.hljs-attribute,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-params {
+  color: var(--hljs-attr);
+}
+.hljs-built_in,
+.hljs-type,
+.hljs-deletion {
+  color: var(--hljs-built-in);
+}
+.hljs-meta,
+.hljs-meta .hljs-keyword {
+  color: var(--hljs-meta);
+}
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-selector-pseudo,
+.hljs-name {
+  color: var(--hljs-selector);
+}
+.hljs-emphasis {
+  font-style: italic;
+}
+.hljs-strong {
+  font-weight: 700;
+}
+
+/* ---------- 标题锚点 ---------- */
+.heading-anchor {
+  opacity: 0;
+  margin-left: 0.35em;
+  font-size: 0.8em;
+  font-weight: 600;
+  color: #818cf8;
+  text-decoration: none !important;
+  transition: opacity 0.15s ease;
+}
+
+h1:hover > .heading-anchor,
+h2:hover > .heading-anchor,
+h3:hover > .heading-anchor,
+h4:hover > .heading-anchor,
+h5:hover > .heading-anchor,
+h6:hover > .heading-anchor {
+  opacity: 1;
+}

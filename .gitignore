@@ -1,0 +1,22 @@
+# dependencies
+node_modules/
+
+# local npm cache (used when system cache is unavailable)
+.npm-cache/
+
+# build output
+dist/
+dist-ssr/
+
+# logs
+logs/
+*.log
+npm-debug.log*
+
+# editor / os
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.local
+Thumbs.db
